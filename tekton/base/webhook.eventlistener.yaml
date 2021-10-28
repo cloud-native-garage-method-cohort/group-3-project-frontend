@@ -26,6 +26,8 @@ spec:
             value: funfact-app
           - name: source-repo
             value: https://github.com/cloud-native-garage-method-cohort/group-3-project-frontend.git
+          - name: source-repo-revision
+            value: main
           - name: image-repo
             value: quay.io/ting_wu/funfact_repo
         pipelineRef:
