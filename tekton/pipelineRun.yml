@@ -5,11 +5,11 @@ metadata:
 spec:
   params: 
     - name: app-name
-      value: nextjs-sample-app
+      value: funfact-app
     - name: source-repo
-      value: https://github.com/fbh112/e2e_nextjs
+      value: https://github.com/cloud-native-garage-method-cohort/group-3-project-frontend.git
     - name: image-repo
-      value: quay.io/ting_wu/e2e_nextjs
+      value: quay.io/repository/ting_wu/funfact_repo
   pipelineRef:
     name: buildah
   serviceAccountName: build-robot

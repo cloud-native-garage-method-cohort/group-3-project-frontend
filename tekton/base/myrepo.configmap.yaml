@@ -5,5 +5,5 @@ metadata:
 data:
   branch: main
   host: github.com
-  org: fbh112
-  repo: e2e-gitops
+  org: cloud-native-garage-method-cohort
+  repo: group3-gitops

@@ -1,12 +1,12 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: nextjs-sample-app
+  name: funfact-app
 spec:
   tls:
     termination: edge
   to:
-    name: nextjs-sample-app
+    name: funfact-app
     kind: Service
     weight: 100
   port: 
