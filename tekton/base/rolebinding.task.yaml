@@ -1,9 +1,10 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: build-bot
+  name: build-robot
 secrets:
-  - name: quay-io-credentials
+- name: mycredentials-quay
+
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
@@ -46,5 +47,5 @@ roleRef:
   kind: Role
   apiGroup: rbac.authorization.k8s.io
 subjects:
-  - name: build-bot
+  - name: build-robot
     kind: ServiceAccount

@@ -30,7 +30,11 @@ spec:
           fi
         }
 
+        pwd
+        ls -ltr
+        ls -ltr source
         cd source/k8s
+      
 
         if [ -f kustomization.yaml ] || [ -f kustomization.yml ] || [ -f Kustomization ]; then
           echo "Kustomization file found."

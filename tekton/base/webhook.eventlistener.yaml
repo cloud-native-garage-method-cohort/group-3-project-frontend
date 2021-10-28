@@ -19,49 +19,45 @@ spec:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
-        generateName: tkn-e2e-assignment-
+        generateName: buildah-
       spec:
-        params:
+        params: 
           - name: app-name
-            value: tkn-e2e-assignment
+            value: nextjs-sample-app
           - name: source-repo
-            value: https://github.com/cloud-native-garage-method-cohort/till-e2e-assignment-app.git
+            value: https://github.com/fbh112/e2e_nextjs
           - name: image-repo
-            value: quay.io/tillus/cnb-tkn-e2e-assignment
-        serviceAccountName: build-bot
+            value: quay.io/ting_wu/e2e_nextjs
         pipelineRef:
-          name: build-push-express
+          name: buildah
+        serviceAccountName: build-robot
         workspaces:
-          - name: pipeline-shared-data
-            volumeClaimTemplate:
-              spec:
-                accessModes:
-                  - ReadWriteOnce
-                resources:
-                  requests:
-                    storage: 1Gi
-          - name: gitops-repository
-            volumeClaimTemplate:
-              spec:
-                resources:
-                  requests:
-                    storage: 1Gi
-                accessModes:
-                  - ReadWriteOnce
-          - name: git-credentials
-            secret:
-              secretName: git-credentials
+        - name: pipeline-shared-data
+          volumeClaimTemplate:
+            spec:
+              accessModes:
+                - ReadWriteOnce 
+              resources:
+                requests:
+                  storage: 1Gi
+        - name: git-ops-repo
+          volumeClaimTemplate:
+            spec:
+              resources:
+                requests:
+                  storage: 1Gi
+              accessModes:
+              - ReadWriteOnce
+        - name: mycredentials
+          secret:
+            secretName: mycredentials-github
+
 ---
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerBinding
 metadata:
   name: webhook-receiver
-spec:
-  params:
-    - name: source-repo
-      value: $(body.repository.url)
-    - name: sha
-      value: $(body.head_commit.id)
+
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
@@ -89,11 +85,13 @@ rules:
       - ""
     verbs:
       - list
+
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: webhook-receiver
+
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -106,6 +104,7 @@ roleRef:
 subjects:
   - name: webhook-receiver
     kind: ServiceAccount
+
 ---
 apiVersion: route.openshift.io/v1
 kind: Route
