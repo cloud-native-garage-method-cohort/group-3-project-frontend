@@ -27,7 +27,7 @@ spec:
           - name: source-repo
             value: https://github.com/cloud-native-garage-method-cohort/group-3-project-frontend.git
           - name: image-repo
-            value: quay.io/repository/ting_wu/funfact_repo
+            value: quay.io/ting_wu/funfact_repo
         pipelineRef:
           name: buildah
         serviceAccountName: build-robot
