@@ -18,6 +18,8 @@ spec:
     params:
     - name: url
       value: $(params.source-repo)
+    - name: revision
+      value: pipeline-dev
     workspaces:
     - name: output
       workspace: pipeline-shared-data

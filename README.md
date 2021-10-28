@@ -1,3 +1,7 @@
+apprepo: https://github.com/cloud-native-garage-method-cohort/group-3-project-frontend.git
+gitrepo: 
+quay repo: quay.io/ting_wu/funfact_repo
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
